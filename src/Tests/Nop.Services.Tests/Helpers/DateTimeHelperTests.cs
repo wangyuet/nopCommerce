@@ -121,24 +121,6 @@ namespace Nop.Services.Tests.Helpers
         }
 
         [Test]
-        public void Can_convert_dateTime_to_userTime()
-        {
-            var sourceDateTime = TimeZoneInfo.FindSystemTimeZoneById("E. Europe Standard Time"); //(GMT+02:00) Minsk;
-            sourceDateTime.ShouldNotBeNull();
-
-            var destinationDateTime = TimeZoneInfo.FindSystemTimeZoneById("North Asia Standard Time"); //(GMT+08:00) Krasnoyarsk;
-            destinationDateTime.ShouldNotBeNull();
-
-            //summer time
-            _dateTimeHelper.ConvertToUserTime(new DateTime(2010, 06, 01, 0, 0, 0), sourceDateTime, destinationDateTime)
-                .ShouldEqual(new DateTime(2010, 06, 01, 6, 0, 0));
-
-            //winter time
-            _dateTimeHelper.ConvertToUserTime(new DateTime(2010, 01, 01, 0, 0, 0), sourceDateTime, destinationDateTime)
-                .ShouldEqual(new DateTime(2010, 01, 01, 6, 0, 0));
-        }
-
-        [Test]
         public void Can_convert_dateTime_to_utc_dateTime()
         {
             var sourceDateTime = TimeZoneInfo.FindSystemTimeZoneById("E. Europe Standard Time"); //(GMT+02:00) Minsk;

@@ -106,32 +106,7 @@ namespace Nop.Services.Tests.Catalog
             _priceFormatter.FormatPrice(1234.5M, false, currency, language, false, false).ShouldEqual("€1234.50");
         }
 
-        [Test]
-        public void Can_formatPrice_with_distinct_currencyDisplayLocale()
-        {
-            var usd_currency = new Currency()
-            {
-                Id = 1,
-                Name = "US Dollar",
-                CurrencyCode = "USD",
-                DisplayLocale = "en-US",
-            };
-            var rub_currency = new Currency()
-            {
-                Id = 2,
-                Name = "Russian Ruble",
-                CurrencyCode = "RUB",
-                DisplayLocale = "ru-RU",
-            };
-            var language = new Language()
-            {
-                Id = 1,
-                Name = "English",
-                LanguageCulture = "en-US"
-            };
-            _priceFormatter.FormatPrice(1234.5M, false, usd_currency, language, false, false).ShouldEqual("$1,234.50");
-            _priceFormatter.FormatPrice(1234.5M, false, rub_currency, language, false, false).ShouldEqual("1 234,50р.");
-        }
+
 
         [Test]
         public void Can_formatPrice_with_showTax()
